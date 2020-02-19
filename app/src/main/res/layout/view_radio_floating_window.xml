@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="22dp"
+    app:cardElevation="2dp">
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="43dp"
+        android:gravity="center_vertical">
+
+        <RelativeLayout
+            android:id="@+id/rlDisk"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp">
+
+            <ImageView
+                android:id="@+id/ivDiskImage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:src="@mipmap/icon_disk"/>
+
+            <com.airbnb.lottie.LottieAnimationView
+                android:id="@+id/diskAnimView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                android:layout_centerInParent="true"
+                app:lottie_fileName="anim_radio_disk.json"
+                app:lottie_loop="true"
+                app:lottie_autoPlay="true"/>
+
+        </RelativeLayout>
+
+        <ImageView
+            android:id="@+id/ivPlayController"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/icon_controller_pause"
+            android:padding="8dp"/>
+
+        <ImageView
+            android:id="@+id/ivClose"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:src="@mipmap/icon_controller_close"
+            android:layout_marginEnd="5dp"
+            android:padding="5dp"/>
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
