@@ -132,7 +132,7 @@ abstract class AbstractFloatingWindow : FloatingWindowInterface, TouchProxy.OnTo
     open fun adjustWindowPosition() {
         if (isPortrait()) {
             floatingWindowParams?.let { param ->
-                if (param.leftMargin < (getAppScreenWidth() -  windowWidth)/2) {
+                if (param.leftMargin <= (getAppScreenWidth() -  windowWidth)/2) {
                     param.leftMargin = windowMargin
                 } else {
                     param.leftMargin = getAppScreenWidth() -  windowWidth - windowMargin
