@@ -3,6 +3,8 @@ package com.pimuseum.demo.floatingwindow.core
 import android.app.Activity
 import android.app.Application
 import android.os.Bundle
+import android.view.View
+import android.widget.FrameLayout
 import com.pimuseum.demo.floatingwindow.core.inter.AbstractFloatingWindow
 import com.pimuseum.demo.floatingwindow.core.info.FloatingWindowInfo
 import com.pimuseum.demo.floatingwindow.core.windows.RadioFloatingWindow
@@ -53,6 +55,15 @@ object FloatingWindowKit {
 
                 //不需要的添加 window Activity
                 if (activity is RadioActivity) return
+
+                //检查是否已经存在 window ,如果存在则不添加 (针对某些生命周期或启动模式异常)
+                activity?.let { mAttachActivity->
+                    val mDecorView = mAttachActivity.window.decorView as FrameLayout
+                    val mRootView = floatingWindows[mAttachActivity.hashCode()]?.mRootView
+                    if (mRootView != null && mDecorView.indexOfChild( mRootView as View) != -1) {
+                        return
+                    }
+                }
 
                 activity?.let { attachActivity ->
                     val radioWindow : RadioFloatingWindow = RadioFloatingWindow::class.java.newInstance()
